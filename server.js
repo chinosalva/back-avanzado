@@ -3,5 +3,7 @@ import api from './api/api.js'
 
 const server = http.createServer(api)
 
-server.listen(3000)
+server.listen(3000, () => {
+    console.log('Servidor arriba y funcionando')
+})
 
