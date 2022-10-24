@@ -3,7 +3,16 @@ import api from './api/api.js'
 
 const server = http.createServer(api)
 
-server.listen(3000, () => {
-    console.log('Servidor arriba y funcionando')
+server.on ('error', (error) => {
+    if (error.code === 'EADDRINUSE'){
+        console.log('Ese puerto ya esta siendo usado por otra aplicacion')
+    }
+    console.error('Error al iniciar servidor')
 })
+
+server.on ('listening', () => {
+    console.log('Servidor escuchando')
+})
+
+server.listen(3000)
 
