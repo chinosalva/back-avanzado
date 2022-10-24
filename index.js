@@ -4,14 +4,14 @@ import User from './api/models/User.js'
 
 dotenv.config()
 
-mongoose.connect(process.env.DB_URI, () => {
+mongoose.connect(process.env.DB_URI, async() => {
     console.log("Conexion a base de datos satisfactoria")
 
     /*
         CRUD con mongoose
     */
 
-    User.create({
+    const user = await User.create({
         address: 'Direcion prueba',
         birthday: new Date(),
         contacts: ['Pedrito', 'Jorge'],
@@ -22,6 +22,8 @@ mongoose.connect(process.env.DB_URI, () => {
         phonenumber: '5627572781',
         role: 'Client',
     })
+
+    console.log(user)
 
     //User.find({
         //     name: 'Juan',
