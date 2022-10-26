@@ -63,8 +63,8 @@ mongoose.connect(process.env.DB_URI, async() => {
 
         console.log(book)
 
-    const find = await Book.find({
-        name: 'El rey del cash',
+    const find = await Book.findByIdAndUpdate('6356f1550f2d77364f7abfa5', {
+        title: 'Titulo Cambiado',
     })
 
         console.log(find)
