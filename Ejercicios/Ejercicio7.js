@@ -4,5 +4,24 @@ import Restaurant from "../api/models/Restaurant.js"
 connect()
 
 const run = async() => {
-    const seven = await Restaurant.find()
+    const seven = await Restaurant.find(
+        {
+            $or: 
+        [  
+            {
+                borough: 'Staten Island',
+            },
+            {
+                borough: 'Bronx Brooklin',
+            },
+        ],
+        }, 
+        {
+        name: 1,
+        borough: 1,
+        })
+
+    console.log(seven)
 }
+
+run()
